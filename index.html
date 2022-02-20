@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar e arrendar casa | Imovirtual</title>
+    <link rel="icon" 
+      type="logo/png" 
+      href="/Trabalho Tw/imagens/logo.png" />
+    <!--Link CSS-file--> <link rel="stylesheet" href="estilos.css">
+    <!-- link fontawesome --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<header>
+    <!-- Nav Bar -->
+    <nav >
+        <div class="menu">
+            <div class="nav-logo" alt="logotipo"> </div>
+            <li><a href="https://www.imovirtual.com/comprar/">Anuncios</a></li>
+            <li><a href="https://www.imovirtual.com/empresas/home/agencias-imobiliarias/">Profissionais</a></li>
+            <li><a href="https://www.imovirtual.com/noticias/">Blog</a></li>
+            <li><a href="https://nossacasanossomundo.com/">A nossa Campanha</a></li>
+            <div class="right-nav">
+                <li><a href="#"><i class="fa fa-user"></i>&nbsp;Conta Pessoal</a></li>
+                <li><a href="#">pt</a></li>
+                <li><a  href="#" class="btn_add_anuncio"><b>Adicionar Anúncio</b></a></li>
+            </div>
+             </div>
+        </div>
+    </nav>
+    <!-- Navbar for mobile resolution-->
+    <nav>
+        <div class="menu-mobile">
+            <img class="nav-logo">
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+                <a href="https://www.imovirtual.com/comprar/">Anuncios</a>
+                <a href="#">Profissionais</a>
+                <a href="#">Blog</a>
+                <a href="#">A nossa Campanha</a>
+                <hr>
+                <a href="#"><i class="fa fa-user"></i>&nbsp;Conta Pessoal</a>
+                <a href="#">pt</a>
+                <a  href="#" class="btn_add_anuncio"><b>Adicionar Anúncio</b></a>
+              </div>
+              
+              <div id="main">
+                <a class="openbtn" id="navbtn">&#9776;</a>
+              </div>
+        </div>
+    </nav>
+</header>
+    <!-- Index Benner-->
+    <section>
+        <div class="main-benner">
+            
+            <section class="main-text">
+                <h1>O melhor sítio para comprar e arrendar casa em Portugal</h1>
+             
+                <div class="pesquisar-div">
+                     <form>
+                        <div class="first-line">
+                            <select name="imoveis" id="imoveis">
+                                <option value="apartamentos">Apartamentos</option>
+                                <option value="moradias">Moradias</option>
+                                <option value="terrenos">Terrenos</option>
+                                <option value="armazens">Armazéns</option>
+                            </select>
+
+                            <select name="tiposervico" id="tiposervico">
+                                <option value="comprar">Para Comprar</option>
+                                <option value="arrendar">Para Arrendar</option>
+                                <option value="ferias">Para Férias</option>
+                            </select>
+
+                            <input type="text" class="psq-bar" name="localizacao" id="pesquisabar" placeholder="Procure por uma localização">
+                            <button type="button" id="submitBtn" class="btn-submit-search" onclick="calculoZonas()"><i class="fa fa-search"></i>&nbsp;Calcular</button>
+                        </div>
+
+                        <div class="second-line">
+                            <input type="number" name="preco" id="preco" placeholder="Preço €" required>
+                            <input type="number" name="areaUtil" id="areaUtil" placeholder="área util(m²)" required>
+
+                            <select name="idadeImovel" id="idadeImovel" required>
+                                <option value="default">Idade Imovel</option>
+                                <option value="1">Menos de 5 anos</option>
+                                <option value="0.95">5 a 10 anos</option>
+                                <option value="0.9">Mais de 10 anos</option>
+                            </select>
+
+                            <select name="tipologia" id="tipologia" required>
+                                <option value="default">Tipologia</option>
+                                <option value="T1">T1</option>
+                                <option value="T2">T2</option>
+                                <option value="T3">T3</option>
+                            </select>
+
+                            <select name="Garagem" id="garagem" required>
+                                <option value="default">Garagem</option>
+                                <option value="1">Sim</option>
+                                <option value="0.95">Não</option>
+                            </select>
+
+                            <select name="tpublicos" id="tpublicos" required>
+                                <option value="default">Transportes Públicos</option>
+                                <option value="1">Sim</option>
+                                <option value="0.9">Não</option>
+                            </select>
+                        </div>
+                      </form>
+                   </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <!--Resultado da pesquisa depois de receber o javascript apresenta o resultado -->
+    <section class="resultPesquisa" id="resultPesquisa">
+        <h2 class="tc">Resultados do calculo</h2>
+        <div class="divPesquisa">
+            <div id="zona1">
+                <h3>Aldeia</h3>
+                <h2 class="price" id="precozona1">€</h2>
+                <div class="detalhesZonas" id="detalhesZonas1">
+               </div>
+
+            </div>
+            <div id="zona2">
+                <h3>Vila</h3>
+                <h2 class="price" id="precozona2">€</h2>
+                <div class="detalhesZonas" id="detalhesZonas2">
+                </div>  
+            </div>
+            <div id="zona3">
+                <h3>Cidade</h3>
+                <h2 class="price" id="precozona3">€</h2>
+                <div class="detalhesZonas" id="detalhesZonas3">
+                </div>
+            </div>
+        </div>
+        <div class="divFinanciamento" id='divFinanciamento'>
+            <select name='financiamento' id='financiamento'>
+                <option value="default">Zona...</option>
+                <option value="1">Aldeia</option>
+                <option value="2">Vila</option>
+                <option value="3">Cidade</option>
+            </select>
+            <input type="number" id="emprestimo" placeholder="Emprestimo(€)">
+            <input type="number" id="anos" placeholder="Duração(Anos)">
+            <input type="number"  id="entrada" placeholder="Entrada Inicial">
+             <button type='button' class='btn-submit-search' id='btn-financiamento'>€</i>&nbsp;Financiamento</button>
+        </div>
+    </section>
+    <section class="resultSimulacao" id="resultSimulacao">
+        <div class="divPesquisa">
+            <div id="e1">
+                <h3>Millenium</h3>
+                <div class="s1" id="s1">
+
+               </div>
+        
+            </div>
+            <div id="e2">
+                <h3>Banco de Portugal</h3>
+                <div class="s1" id="s2">
+
+                </div>  
+            </div>
+            <div id="e3">
+                <h3>Santander</h3>
+                <div class="s1" id="s3">
+                </div>
+            </div>
+        </div>
+    </section>
+     <!--grid-->
+     <section class="section-main-promoted">
+        <div class="container">
+          <h2 style="text-align: center;">Anúncios destacados</h2>
+            <div class="gallery">
+              <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6IjV2cno5eWI5Z3V1NTEtRUNPU1lTVEVNIiwidyI6W3siZm4iOiI0amFmcGw5aDNmZ3QtQVBUIiwicyI6IjE0IiwicCI6IjEwLC0xMCIsImEiOiIwIn1dfQ.am-3liVfd16ZqPAxZlwUpm-XpHWYOUXU0jvc4RqgSgo/image;s=655x491;q=80" class="img-gallery" id="item-1">                 
+                <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6ImRna2Zrb3ZlY2VmdS1FQ09TWVNURU0iLCJ3IjpbeyJmbiI6IjRqYWZwbDloM2ZndC1BUFQiLCJzIjoiMTQiLCJwIjoiMTAsLTEwIiwiYSI6IjAifV19.3GglwTDcwi1Vd5zgP88xqwaro7xN4du0eBbkNwVpMQo/image;s=655x491;q=80" class="img-gallery" id="item-2">
+                <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6ImUyMWJwZzdmNjJ5MTItRUNPU1lTVEVNIiwidyI6W3siZm4iOiI0amFmcGw5aDNmZ3QtQVBUIiwicyI6IjE0IiwicCI6IjEwLC0xMCIsImEiOiIwIn1dfQ.93zuj7KGmgHq05DdRWJ5opfJKFwLwXquR26XKucfMF8/image;s=655x491;q=80" class="img-gallery" id="item-3">
+                <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6Imp6dmVrbWkxN2hwdC1BUFQiLCJ3IjpbeyJmbiI6IjRqYWZwbDloM2ZndC1BUFQiLCJzIjoiMTQiLCJwIjoiMTAsLTEwIiwiYSI6IjAifV19.UheX1SvSihZTVUWob5q6Edf_hbD66O7qsq80J8hJr2Q/image;s=655x491;q=80" class="img-gallery" id="item-4">
+                <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6InpyMnF1YTBpMjZ3eDItRUNPU1lTVEVNIiwidyI6W3siZm4iOiI0amFmcGw5aDNmZ3QtQVBUIiwicyI6IjE0IiwicCI6IjEwLC0xMCIsImEiOiIwIn1dfQ.a8V_s7-iSudl_xMtjysNJv2JJTf-qG9YTS98FiRyo0A/image;s=655x491;q=80" class="img-gallery" id="item-5">
+                <img src="https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6Im9kcHViZjNycTkyYjMtRUNPU1lTVEVNIiwidyI6W3siZm4iOiI0amFmcGw5aDNmZ3QtQVBUIiwicyI6IjE0IiwicCI6IjEwLC0xMCIsImEiOiIwIn1dfQ.2upaju0l1znd5lfQ4lUXx6SM9HuDD_NlItpeWZUMMXU/image;s=655x491;q=80" class="img-gallery" id="item-6">
+            </div>
+  
+        </div>
+    </section>
+  
+     <!-- Botão Ajuda -->
+     <button id="botaoajuda" onclick="var win = window.open('https://imovirtual1.zendesk.com/hc/pt/requests/new?ticket_form_id=114093985833'); win.focus(); return false;" title="Feedback">
+        <span>Ajuda</span>
+      </button>
+<!-- No imovirtual vai encontrar // icons-->
+<section class="section-main-featured">
+    <div class="container-fluid container-fluid-sm">
+        <h3 class="text-center">No Imovirtual vai encontrar</h3>
+        <ul class="featured-list">
+                            <li class="item">
+                    <a href="#" class="circle" >
+                        <i class="fa fa-building"></i>
+                    </a>
+                    <h4>apartamentos</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/apartamento/" class="hasThirdPurpose" title="Apartamentos para Arrendar em Portugal">para comprar</a></li>                       
+                        <li><a href="https://www.imovirtual.com/arrendar/apartamento/" class="hasThirdPurpose" title="Apartamentos para Venda em Portugal">para arrendar</a></li> 
+                        <li><a href="https://www.imovirtual.com/ferias/apartamento/" class="hasThirdPurpose" title="Apartamentos para Venda em Portugal" >Para férias</a></li>  
+                   </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-house"></i>
+                    </a>
+                    <h4>moradias</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/moradia/" class="hasThirdPurpose" title="Moradias para Arrendar em Portugal">para comprar</a></li> 
+                        <li><a href="https://www.imovirtual.com/arrendar/moradia/" class="hasThirdPurpose" title="Moradias para Venda em Portugal">para arrendar</a></li>                        
+                        <li><a href="https://www.imovirtual.com/ferias/moradia/" class="hasThirdPurpose" title="Moradias para Venda em Portugal">Para férias</a></li> 
+                      </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-sofa"></i>
+                    </a>
+                    <h4>quartos</h4>
+                    <ul class="item-options">
+                       <li><a href="https://www.imovirtual.com/arrendar/quarto/" class="hasThirdPurpose" title="Quartos para Arrendar em Portugal">para arrendar</a></li></ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-tree"></i>
+                    </a>
+                    <h4>terrenos</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/terreno/" class="hasThirdPurpose" title="Terrenos para Venda em Portugal">para comprar</a></li> 
+                        <li><a href="https://www.imovirtual.com/arrendar/terreno/" class="hasThirdPurpose" title="Terrenos para Arrendar em Portugal">para arrendar</a></li></ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-shop"></i>
+                    </a>
+                    <h4>lojas</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/loja/" class="hasThirdPurpose" title="Lojas para Venda em Portugal">para comprar</a></li> 
+                        <li><a href="https://www.imovirtual.com/arrendar/loja/" class="hasThirdPurpose" title="Lojas para Arrendar em Portugal">para arrendar</a></li>
+                      </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-factory"></i>
+                    </a>
+                    <h4>armazéns</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/armazem/" class="hasThirdPurpose" title="Armazéns para Venda em Portugal">para comprar</a></li>
+                        <li><a href="https://www.imovirtual.com/arrendar/armazem/" class="hasThirdPurpose" title="Armazéns para Arrendar em Portugal">para arrendar</a></li>                       
+                       </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-building"></i>
+                    </a>
+                    <h4>prédios</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/predio/" class="hasThirdPurpose" title="Prédios para Venda em Portugal">para comprar</a></li>
+                        <li><a href="https://www.imovirtual.com/arrendar/predio/" class="hasThirdPurpose" title="Prédios para Arrendar em Portugal">para arrendar</a></li>
+                  </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-office"></i>
+                    </a>
+                    <h4>escritórios</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/escritorio/" class="hasThirdPurpose" title="Escritórios para Venda em Portugal" >para comprar</a></li>
+                        <li><a href="https://www.imovirtual.com/arrendar/escritorio/" class="hasThirdPurpose" title="Escritórios para Arrendar em Portugal">para arrendar</a></li>
+                       </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="fas fa-baseball-ball"></i>
+                    </a>
+                    <h4>garagens</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/garagem/" class="hasThirdPurpose" title="Garagens para Venda em Portugal">para comprar</a></li> 
+                        <li><a href="https://www.imovirtual.com/arrendar/garagem/" class="hasThirdPurpose" title="Garagens para Arrendar em Portugal">para arrendar</a></li>                                            </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-farm"></i>
+                    </a>
+                    <h4>quintas e herdades</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/quintaeherdade/" class="hasThirdPurpose" title="Quintas e herdades para Venda em Portugal">para comprar</a></li>
+                        <li><a href="https://www.imovirtual.com/arrendar/quintaeherdade/" class="hasThirdPurpose" title="Quintas e herdades para Arrendar em Portugal">para arrendar</a></li> 
+                    </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-goodwill"></i>
+                    </a>
+                    <h4>trespasses</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/comprar/trespasse/" class="hasThirdPurpose" title="Trespasses em Portugal">para comprar</a></li>                                                                    </ul>
+                </li>
+                            <li class="item">
+                    <a href="#" class="circle">
+                        <i class="icon-skyscrapers"></i>
+                    </a>
+                    <h4>empreendimentos</h4>
+                    <ul class="item-options">
+                        <li><a href="https://www.imovirtual.com/investimento/" class="hasThirdPurpose">para comprar</a></li>                                                                    </ul>
+                </li>
+                    </ul>
+    </div>
+  </section>
+
+<!-- Blog -->
+<div class="main-articles-list" data-atlas-slider>
+    <h3>Blog</h3>
+    <div class="main-articles-item" data-atlas-slider-item>
+      <a
+        href="https://www.imovirtual.com/noticias/lifestyle/idosos-casa-dicas"
+        title="Idosos: dicas para melhorar a qualidade de vida em casa"
+        class="article-photo-box"
+      >
+        <figure>
+          <img class="blog-image"
+            src="https://images.prismic.io/imovirtual/a45f1dc1-afe4-4867-81e7-889e2cac544a_iStock-1272459744.jpg?auto=compress,format"
+            alt="Idosos: dicas para melhorar a qualidade de vida em casa"
+          />
+          <figcaption>
+            <span class="main-articles-item-date">28.10.2021</span>
+            <h5>Idosos: dicas para melhorar a qualidade de vida em casa</h5>
+            <div class="main-articles-item-tag-list">
+              <span class="main-articles-item-tag">idosos</span>
+
+              <span class="main-articles-item-tag">vida em casa</span>
+
+              <span class="main-articles-item-tag">dicas</span>
+
+              <span class="main-articles-item-tag">imovirtual</span>
+
+              <span class="main-articles-item-tag">cuidador de idosos</span>
+            </div>
+          </figcaption>
+          <span class="main-articles-item-category">lifestyle</span>
+        </figure>
+      </a>
+    </div>
+    <div class="main-articles-item" data-atlas-slider-item>
+      <a
+        href="https://www.imovirtual.com/noticias/imobiliario/guia-morar-sozinho"
+        title="Guia para morar sozinho"
+        class="article-photo-box"
+      >
+        <figure>
+          <img class="blog-image"
+            src="https://images.prismic.io/imovirtual/2e038f69-99b6-4b28-afc4-43c10e2fee35_iStock-1202700827+%281%29.jpg?auto=compress,format"
+            alt="Guia para morar sozinho"
+          />
+          <figcaption>
+            <span class="main-articles-item-date">27.10.2021</span>
+            <h5>Guia para morar sozinho</h5>
+            <div class="main-articles-item-tag-list">
+              <span class="main-articles-item-tag">morar sozinho</span>
+
+              <span class="main-articles-item-tag">comprar casa</span>
+
+              <span class="main-articles-item-tag">arrendar casa</span>
+
+              <span class="main-articles-item-tag">morar sozinho dicas</span>
+            </div>
+          </figcaption>
+          <span class="main-articles-item-category">imobiliario</span>
+        </figure>
+      </a>
+    </div>
+    <div class="main-articles-item" data-atlas-slider-item>
+      <a
+        href="https://www.imovirtual.com/noticias/noticias/lei-de-bases-habitacao-marcelo-rebelo-sousa"
+        title="Lei de Bases da Habitação promulgada por Presidente da República"
+        class="article-photo-box"
+      >
+        <figure>
+          <img class="blog"
+            src="https://images.prismic.io/imovirtual/74cf8728-6b5f-4efd-8d74-ed76352ea549_iStock-1170744881.jpg?auto=compress,format"
+            alt="Lei de Bases da Habitação promulgada por Presidente da República"
+          />
+          <figcaption>
+            <span class="main-articles-item-date">26.10.2021</span>
+            <h5>
+              Lei de Bases da Habitação promulgada por Presidente da República
+            </h5>
+            <div class="main-articles-item-tag-list">
+              <span class="main-articles-item-tag"
+                >lei de bases da habitação</span
+              >
+
+              <span class="main-articles-item-tag"
+                >presidente da república</span
+              >
+
+              <span class="main-articles-item-tag"
+                >marcelo rebelo de sousa</span
+              >
+
+              <span class="main-articles-item-tag"
+                >Instituto Nacional de Estatística</span
+              >
+
+              <span class="main-articles-item-tag">construção civil</span>
+
+              <span class="main-articles-item-tag"
+                >matosinhos office center</span
+              >
+
+              <span class="main-articles-item-tag"
+                >investimento imobiliário</span
+              >
+            </div>
+          </figcaption>
+          <span class="main-articles-item-category">noticias</span>
+        </figure>
+      </a>
+    </div>
+  </div>
+<!--Botao mais antigos-->
+  <div class="divbotaomaisantigos">
+    <a href="https://www.imovirtual.com/noticias/" class="btnmaisantigos">mais artigos</a>
+</div>
+  <!--Fim blog-->
+
+    <!--Footer-->
+    <section class="section-recents">
+        <div class="container-fluid">
+            <div class="row-rec">
+                <div class="recents-col">
+                    <h5>Pesquisas Recentes</h5>
+                    <div class="row-rec">
+                        <div class="recents-col">
+                            <ul class="links-recents">
+                                <li><a href="#">Comprar apartamento em Lisboa</a></li>
+                                <li><a href="#">Comprar apartamento em Lisboa</a></li>
+                                <li><a href="#">Comprar apartamento no Porto</a></li>
+                                <li><a href="#">Comprar apartamento em Vila Nova de Gaia</a></li>
+                                <li><a href="#">Comprar apartamento em Sintra</a></li>
+                            </ul>
+                        </div>
+                        <div class="recents-col">
+                            <ul class="links-recents">
+                                <li><a href="#">Comprar escritório em Lisboa</a></li>
+                                <li><a href="#">Comprar escritório no Porto</a></li>
+                                <li><a href="#">Comprar loja no Porto</a></li>
+                                <li><a href="#">Comprar armazém em Lisboa</a></li>
+                                <li><a href="#">Comprar garagem no Porto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               <div class="recents-col">
+                    <h5>Anúncios recentes</h5>
+                    <div class="row-rec">
+                        <div class="recents-col">
+                            <ul class="links-recents">
+                                <li><a href="#">Terreno</a></li>
+                                <li><a href="#">Armazém</a></li>
+                                <li><a href="#">Terreno</a></li>
+                                <li><a href="#">Terreno</a></li>
+                                <li><a href="#">T3 A 5 MINTS DO CENTRO</a></li>
+                            </ul>
+                        </div>
+                        <div class="recents-col">
+                            <ul class="links-recents">
+                                <li><a href="#">Terreno agrícola</a></li>
+                                <li><a href="#">Moradia T4 em Palmela com vista para o mar</a></li>
+                                <li><a href="#">Venda de Lote com 942 m2</a></li>
+                                <li><a href="#">Terreno c/850 m2-Vila do Conde</a></li>
+                                <li><a href="#">Fronteira- Moradia T3(2 Pisos)com quintal</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container-fluid">
+            <img class="footer-logo" src="https://statics.imovirtual.com/static/imovirtualpt/packed/img/2f5bb34cf0099a40446250ea19ebabed28.png">
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="footer-col">
+                    <ul class="links-footer">
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Ajuda</a></li>
+                        <li><a href="#">Contacte-nos - Serviço Cliente</a></li>
+                        <li><a href="#">Preços</a></li>
+                        <li><a href="#">Termos de utilização</a></li>
+                        <li><a href="#">Politíca de Privacidade</a></li>
+                        <li><a href="#">Configurações de Privacidade</a></li>
+                        <li><a href="#">Livro de Reclamações online</a></li>
+                        <li><a href="#">Dicas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="headline">Serviços e Ferramentas</div>
+                    <ul class="links-footer">
+                        <li><a href="#">Vantagens para Profissionais</a></li>
+                        <li><a href="#">Imovalor</a></li>
+                        <li><a href="#">Relatório Mercado</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="headline">Mapa do Site</div>
+                    <ul class="links-footer">
+                        <li><a href="#">Mapa do site</a></li>
+                        <li><a href="#">Mapa de distritos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Lista de Agências</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="apps-links">
+                        <ul class="links-footer">
+                            <li><a href="https://play.google.com/store/apps/details?id=com.fixeads.imovirtual&amp;referrer=utm_source%3Dimovirtual.com%26utm_medium%3Dcpc%26utm_campaign%3Dandroid-app-footer"
+                                    title="Imovirtual. Portal Imobiliário - Google Play" class="googleplay"></a></li>
+                            <li class="apps-links-sm-space"><a
+                                    href="https://itunes.apple.com/pt/app/imovirtual/id594152735?mt=8"
+                                    title="Imovirtual. Portal Imobiliário - App Store" class="appstore"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                O uso do website pressupõe uma aceitação dos <a
+                    href="https://imovirtual1.zendesk.com/hc/pt/articles/360003266393-Termos-e-Condi%C3%A7%C3%B5es"
+                    class="text-link">Termos de Utilização</a>
+            </div>
+        </div>
+    </footer>
+
+
+<script src="logica.js"></script>
+</body>
+</html>
